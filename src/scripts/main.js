@@ -1,2 +1,3 @@
 // CSS
-import '../styles/front-page.module.css'
+import '../styles/front-page.css'
+import '../styles/header.css'

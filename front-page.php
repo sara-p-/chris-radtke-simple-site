@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<?php get_header(); ?>
 
-  <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php wp_head(); ?>
-  </head>
+<?php 
+  $workPosts = new WP_Query(array(
+    'posts_per_page' => -1,
+    'post_type' => 'post',
+  ));
+?>
 
-  <body <?php body_class(); ?>>
-    <header class="header">
-      <div class="container">
-        <h1 class="logo">
-          <a href="<?php echo esc_url(site_url()); ?>"><strong>Chris Radtke</a>
-        </h1>
-        <div class="header__menu">
-          <nav class="main-navigation">
-            <?php 
-            wp_nav_menu( array(
-              'theme_location' => 'header_menu'
-            ) ); 
-            ?>
-          </nav>
+<div class="container">
+  <div class="content">
+    <h1 class="page-title"><?php echo get_the_title(); ?></h1>
+    <div class="content__text">
+      <?php  the_field('content'); ?>
+    </div>
+  </div>
+  <?php if($workPosts->have_posts()) : ?>
+  <h2 class="work__title">Work</h2>
+  <div class="loop">
+    <?php while($workPosts->have_posts()) : $workPosts->the_post(); ?>
+    <div class="post">
+      <a href="<?php the_permalink(); ?>" class="post__card">
+        <div class="post__image">
+          <img src="<?php echo get_the_post_thumbnail_url(null, 'large' ) ?>" alt="<?php echo the_title() ?>">
         </div>
-      </div>
-    </header>
+        <p class="post__title"><?php the_title(); ?></p>
+      </a>
+    </div>
+    <?php endwhile; ?>
+  </div>
+  <?php endif; ?>
+</div>
+
+<?php get_footer(); ?>

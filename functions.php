@@ -1,21 +1,8 @@
 <?php
 
 /* 
-  Enqueue Scripts and Styles
-*/
-// add_action( 'wp_enqueue_scripts', 'chris_radkte_styles' );
-
-// function chris_radtkee_styles() {
-  // 	wp_enqueue_style( 
-    // 		'chris-radtke-style', 
-    // 		get_stylesheet_uri()
-    // 	);
-    // }
-    
-/* 
   Enqueue Scripts and Styles (using Vite)
 */
-
 add_action('wp_enqueue_scripts', 'chris_radtke_scripts');
 
 function chris_radtke_scripts() {
@@ -34,11 +21,14 @@ function chris_radtke_scripts() {
   }
 }
 
+/* 
+  Add meta tag to HEAD
+*/
+add_action('wp_head', 'wp_head_meta_tags');
 
-
-// Add Nav Menu
-if (function_exists('register_nav_menu'))
-{
-  register_nav_menu('header_menu', 'Header Menu');
+function wp_head_meta_tags() {
+  echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 }
+
+
 ?>
