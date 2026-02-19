@@ -11,3 +11,9 @@
     text-decoration: none;
   }
 }
+
+@media screen and (min-width: 768px) {
+  #headerimg h1 {
+    font-size: 1.5rem;
+  }
+}
