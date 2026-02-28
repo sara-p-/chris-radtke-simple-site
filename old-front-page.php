@@ -18,7 +18,6 @@
     </div>
   </div>
   <?php if($workPosts->have_posts()) : ?>
-  <h2 class="work__title">Work</h2>
   <div class="loop">
     <?php while($workPosts->have_posts()) : $workPosts->the_post(); ?>
     <a href="<?php the_permalink(); ?>" class="post">

@@ -1,5 +1,8 @@
 #header {
   padding: 0 1rem;
+  width: 100%;
+  max-width: 1203px;
+  margin: auto;
 }
 
 #headerimg {
